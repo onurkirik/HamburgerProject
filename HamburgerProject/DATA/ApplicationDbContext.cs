@@ -60,6 +60,43 @@ namespace HamburgerProject.DATA
                     Price = 138.72
                 });
 
+            modelBuilder.Entity<ExtraMaterial>().HasData(
+
+                new ExtraMaterial()
+                {
+                    Id = 1,
+                    MaterialName = "Ketçap",
+                    Price = 5.00
+                },
+
+                new ExtraMaterial()
+                {
+                    Id = 2,
+                    MaterialName = "Mayonez",
+                    Price = 5.00
+                },
+
+                new ExtraMaterial()
+                {
+                    Id = 3,
+                    MaterialName = "BBQ",
+                    Price = 3.50
+                },
+
+                new ExtraMaterial()
+                {
+                    Id = 5,
+                    MaterialName = "Ranch",
+                    Price = 4.00
+                },
+
+                new ExtraMaterial()
+                {
+                    Id = 6,
+                    MaterialName = "Buffalo",
+                    Price = 5.50
+                });
+
             base.OnModelCreating(modelBuilder);
         }
     }
