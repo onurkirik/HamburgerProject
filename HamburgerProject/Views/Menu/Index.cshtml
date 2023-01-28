@@ -1,5 +1,4 @@
-﻿@using HamburgerProject.DATA;
-@model List<Menu>
+﻿@model List<Menu>
 
 @{
     ViewBag.Title = "Menü Alanı";
@@ -7,7 +6,7 @@
 
 <h1 class="menuTitle">@ViewBag.Title</h1>
 
-<a class="btn bg-success mb-1 newMenuLink" asp-controller="Home" asp-action="CreateMenu">
+<a class="btn bg-success mb-1 newMenuLink" asp-controller="Menu" asp-action="Create">
     <i class="fa-solid fa-plus"></i>
 </a>
 
@@ -29,12 +28,12 @@
                 <td>@menu.MenuName</td>
                 <td>@menu.Price ₺</td>
                 <td>
-                    <a class="btn btn-warning">
+                    <a asp-controller="Menu" asp-action="Update" asp-route-id="@menu.Id" class="btn btn-warning">
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
                 </td>
                 <td>
-                    <a class="btn btn-danger">
+                    <a asp-controller="Menu" asp-action="Delete" asp-route-id="@menu.Id" class="btn btn-danger">
                         <i class="fa-regular fa-trash-can"></i>
                     </a>
                 </td>
@@ -42,3 +41,4 @@
         }
     </tbody>
 </table>
+

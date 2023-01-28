@@ -2,19 +2,19 @@
 @model Menu
 
 @{
-    ViewBag.Title = "Menü Ekleme";
+    ViewBag.Title = "Menü Güncelleme";
 }
 
 <h1 class="mb-3">@ViewBag.Title</h1>
 
-<form method="post" asp-controller="Home" asp-action="CreateMenu">
+<form method="post" asp-controller="Menu" asp-action="Update">
     <div class="mb-3">
         <div class="mb-3">
             <label asp-for="MenuName" class="form-label">Menü Adı:</label>
             <input type="text" asp-for="MenuName" class="form-control" asp-all-route-data="menuName" />
         </div>
 
-        <div class ="mb-3">
+        <div class="mb-3">
             <label asp-for="Price" class="form-label">Menü Ücreti:</label>
             <input type="number" asp-for="Price" class="form-control" />
         </div>

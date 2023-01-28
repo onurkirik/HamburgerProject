@@ -2,6 +2,7 @@
 using HamburgerProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace HamburgerProject.Controllers
@@ -21,32 +22,13 @@ namespace HamburgerProject.Controllers
         {
             return View();
         }
+
         
 
-        public IActionResult Menu()
-        {
-            var menus = _db.Menus.OrderBy(m => m.Id).ToList();
+        
 
-            return View(menus);
-        }
+        
 
-        public IActionResult CreateMenu()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateMenu(Menu menu)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Menus.Add(menu);
-                _db.SaveChanges();
-                return RedirectToAction("Menu");
-            }
-
-            return View();
-        }
         
 
         public IActionResult Privacy()
