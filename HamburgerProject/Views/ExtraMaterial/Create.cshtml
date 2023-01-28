@@ -1,0 +1,23 @@
+﻿@using HamburgerProject.DATA;
+@model ExtraMaterial
+
+@{
+    ViewBag.Title = "Malzeme Ekleme";
+}
+
+<h1 class="mb-3">@ViewBag.Title</h1>
+
+<form method="post" asp-controller="ExtraMaterial" asp-action="Create">
+    <div class="mb-3">
+        <div class="mb-3">
+            <label asp-for="MaterialName" class="form-label">Menü Adı:</label>
+            <input type="text" asp-for="MaterialName" class="form-control" asp-all-route-data="menuName" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label">Menü Ücreti:</label>
+            <input type="number" asp-for="Price" class="form-control" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-outline-dark">Ekle</button>
+</form>

@@ -17,5 +17,47 @@ namespace HamburgerProject.Controllers
 
             return View(materials);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(ExtraMaterial material)
+        {
+            _db.ExtraMaterials.Add(material);
+            _db.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var material = _db.ExtraMaterials.Find(id);
+
+            return View(material);
+        }
+
+        [HttpPost]
+        public IActionResult Update(ExtraMaterial material)
+        {
+            _db.ExtraMaterials.Update(material);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var material = _db.ExtraMaterials.Find(id);
+            _db.ExtraMaterials.Remove(material);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

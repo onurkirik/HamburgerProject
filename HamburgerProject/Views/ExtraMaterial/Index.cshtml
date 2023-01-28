@@ -1,12 +1,12 @@
 ﻿@model List<ExtraMaterial>
 
 @{
-    ViewBag.Title = "Menü Alanı";
+    ViewBag.Title = "Ekstra Malzemeler";
 }
 
 <h1 class="menuTitle">@ViewBag.Title</h1>
 
-<a class="btn bg-success mb-1 newMenuLink" asp-controller="Home" asp-action="CreateMenu">
+<a class="btn bg-success mb-1 newMenuLink" asp-controller="ExtraMaterial" asp-action="Create">
     <i class="fa-solid fa-plus"></i>
 </a>
 
@@ -28,12 +28,12 @@
                 <td>@material.MaterialName</td>
                 <td>@material.Price ₺</td>
                 <td>
-                    <a class="btn btn-warning">
+                    <a asp-controller="ExtraMaterial" asp-action="Update" asp-route-id="@material.Id" class="btn btn-warning">
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
                 </td>
                 <td>
-                    <a asp-controller="Home" asp-action="DeleteMenu" id="@material.Id" data-delete-id="@material.Id" class="btn btn-danger">
+                    <a asp-controller="ExtraMaterial" asp-action="Delete" asp-route-id="@material.Id" class="btn btn-danger">
                         <i class="fa-regular fa-trash-can"></i>
                     </a>
                 </td>
