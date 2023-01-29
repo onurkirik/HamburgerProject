@@ -16,22 +16,5 @@ namespace HamburgerProject.DATA
         public int MenuId { get; set; }
         public Menu Menu { get; set; }
 
-        public void CaltulatePrice()
-        {
-            TotalPrice = 0;
-            TotalPrice += Menu.Price;
-
-            if (Size == Size.Medium)
-                TotalPrice += TotalPrice * 0.10;
-            else if (Size == Size.Large)
-                TotalPrice += TotalPrice * 0.25;
-
-            foreach (var material in EkstraMaterials)
-            {
-                TotalPrice += material.Price;
-            }
-
-            TotalPrice *= Number;
-        }
     }
 }

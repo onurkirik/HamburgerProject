@@ -1,0 +1,39 @@
+﻿@using HamburgerProject.Models.ViewModels;
+@model OrderCreateViewModel
+
+@{
+    ViewBag.Title = "Sipariş Ekleme";
+    int sizeId = 0;
+}
+
+<h1 class="mb-3">@ViewBag.Title</h1>
+
+<form asp-controller="Order" asp-action="Create" method="post">
+    <select class="form-select mb-3" asp-for="MenuId">
+        <option selected value="0">Menü seçiniz</option>
+        @foreach (var item in Model.Menus)
+        {
+            <option value="@item.Id" >@item.MenuName</option>
+        }
+    </select>
+
+    <select placeholder="Boyut Seçiniz" class="form-select mb-3" asp-for="Size">
+            <option value="0">Small</option>
+            <option value="1">Medium</option>
+            <option value="2">Large</option>
+    </select>
+
+    <select multiple class="form-select mb-3" asp-for="MaterialIds">
+        <option selected>Malzeme Seçiniz</option>
+        @foreach (var item in Model.ExtraMaterials)
+        {
+            <option value="@item.Id" >@item.MaterialName</option>
+        }
+    </select>
+
+    <label class="form-label">Sipariş Adedi:</label>
+    <input type="number" asp-for="OrderNumber" class="form-control mb-3" />
+
+    <button class="btn btn-outline-success createOrderBtn" type="submit">Sipariş Ekle</button>
+</form>
+

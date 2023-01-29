@@ -1,41 +1,45 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
-.navbar-collapse{
-    position:absolute;
-    right:0;
-    margin-right:1rem;
+.navbar-collapse {
+    position: absolute;
+    right: 0;
+    margin-right: 1rem;
 }
 
-.navbar-brand{
-    font-weight:bolder;
-    font-size:2rem;
+.navbar-brand {
+    font-weight: bolder;
+    font-size: 2rem;
 }
 
-.newMenuLink{
-    float:right;
-    margin-bottom:1rem;
+.newMenuLink {
+    float: right;
+    margin-bottom: 1rem;
 }
 
-.menuTitle{
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    margin-bottom:2rem;
+.menuTitle {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.createOrderBtn {
+    float: right;
 }
