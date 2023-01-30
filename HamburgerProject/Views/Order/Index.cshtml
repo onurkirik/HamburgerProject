@@ -46,12 +46,12 @@
                 </td>
                 <td>@item.TotalPrice ₺</td>
                 <td>
-                    <a asp-controller="Menu" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">
+                    <a asp-controller="Order" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
                 </td>
                 <td>
-                    <a asp-controller="Menu" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                    <a asp-controller="Order" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
                         <i class="fa-regular fa-trash-can"></i>
                     </a>
                 </td>

@@ -1,0 +1,19 @@
+﻿@model OrderEditViewModel
+@{
+    ViewBag.Title = "Sipariş Düzenleme";
+}
+
+<h1 class="mb-3">@ViewBag.Title</h1>
+
+<form asp-controller="Order" asp-action="Update" method="post">
+
+    <input type="hidden" asp-for="@Model.Order.Id" />
+
+    <label class="form-label" asp-for="@Model.Order.Menu.MenuName">Menü Adı:</label>
+    <input class="form-control mb-3" asp-for="@Model.Order.Menu.MenuName"/>
+
+    <label class="form-label" asp-for="@Model.Order.Number" >Adedi:</label>
+    <input class="form-control mb-3" type="number" asp-for="@Model.Order.Number" />
+
+    <button class="btn btn-outline-warning btnEdit" type="submit">Düzenle</button>
+</form>

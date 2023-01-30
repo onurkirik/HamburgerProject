@@ -61,11 +61,11 @@ namespace HamburgerProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Edit()
+        public IActionResult Update()
         {
             return View();
         }
-
+      
         private void CalculatePrice(Order order)
         {
             order.TotalPrice = 0;
