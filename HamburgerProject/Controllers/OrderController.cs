@@ -61,20 +61,63 @@ namespace HamburgerProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Update()
+        [HttpGet]
+        public IActionResult Update(int id)
         {
-            return View();
+
+
+            var order = _db.Orders.Include(o => o.EkstraMaterials).First(o => o.Id == id);
+
+            var vm = new OrderEditViewModel()
+            {
+                Menus = _db.Menus.ToList(),
+                ExtraMaterials = _db.ExtraMaterials.ToList(),
+                OrderId = order.Id,
+                Size = order.Size,
+                MaterialIds = order.EkstraMaterials.Select(o => o.Id).ToList(),
+                OrderNumber = order.Number,
+                MenuId = order.MenuId,
+
+            };
+
+            return View(vm);
         }
-      
+
+        [HttpPost]
+        public IActionResult Update(OrderEditViewModel vm)
+        {
+            var order = _db.Orders.Include(o => o.EkstraMaterials).Include(o => o.Menu).First(o => o.Id == vm.OrderId);
+            order.Number = vm.OrderNumber;
+            order.MenuId = vm.MenuId;
+            order.Size = vm.Size;
+            order.EkstraMaterials = _db.ExtraMaterials.Where(m => vm.MaterialIds.Contains(m.Id)).ToList();
+            CalculatePrice(order);
+
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        public IActionResult Delete(int id)
+        {
+            var order = _db.Orders.Find(id);
+            _db.Orders.Remove(order);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
         private void CalculatePrice(Order order)
         {
             order.TotalPrice = 0;
-            order.TotalPrice += order.Menu.Price;
+            order.TotalPrice = order.Menu.Price;
 
             if (order.Size == Size.Medium)
-                order.TotalPrice += order.TotalPrice + 10;
+                order.TotalPrice += 10;
             else if (order.Size == Size.Large)
-                order.TotalPrice += order.TotalPrice + 20;
+                order.TotalPrice += 20;
 
             foreach (var material in order.EkstraMaterials)
             {

@@ -15,6 +15,5 @@ namespace HamburgerProject.DATA
 
         public int MenuId { get; set; }
         public Menu Menu { get; set; }
-
     }
 }

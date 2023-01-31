@@ -1,19 +1,38 @@
-﻿@model OrderEditViewModel
+﻿@using HamburgerProject.Models.ViewModels;
+@model OrderEditViewModel
+
 @{
-    ViewBag.Title = "Sipariş Düzenleme";
+    ViewBag.Title = "Sipariş Güncelleme";
 }
 
 <h1 class="mb-3">@ViewBag.Title</h1>
 
 <form asp-controller="Order" asp-action="Update" method="post">
+    <input type="hidden" asp-for="OrderId" />
+    <select class="form-select mb-3" asp-for="MenuId">
+        <option selected value="0">Menü seçiniz</option>
+        @foreach (var item in Model.Menus)
+        {
+            <option value="@item.Id">@item.MenuName</option>
+        }
+    </select>
 
-    <input type="hidden" asp-for="@Model.Order.Id" />
+    <select placeholder="Boyut Seçiniz" class="form-select mb-3" asp-for="Size">
+        <option value="0">Small</option>
+        <option value="1">Medium</option>
+        <option value="2">Large</option>
+    </select>
 
-    <label class="form-label" asp-for="@Model.Order.Menu.MenuName">Menü Adı:</label>
-    <input class="form-control mb-3" asp-for="@Model.Order.Menu.MenuName"/>
+    <select multiple class="form-select mb-3" asp-for="MaterialIds">
+        <option selected>Malzeme Seçiniz</option>
+        @foreach (var item in Model.ExtraMaterials)
+        {
+            <option value="@item.Id">@item.MaterialName</option>
+        }
+    </select>
 
-    <label class="form-label" asp-for="@Model.Order.Number" >Adedi:</label>
-    <input class="form-control mb-3" type="number" asp-for="@Model.Order.Number" />
+    <label class="form-label">Sipariş Adedi:</label>
+    <input type="number" asp-for="OrderNumber" class="form-control mb-3" />
 
-    <button class="btn btn-outline-warning btnEdit" type="submit">Düzenle</button>
+    <button class="btn btn-outline-success createOrderBtn" type="submit">Siparişi Güncelle</button>
 </form>
